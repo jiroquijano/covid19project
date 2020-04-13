@@ -2,11 +2,29 @@
 <html>
 
 <head>
-    <title>COVID19 monitor</title>
+    <title>Covid-19 geolocator</title>
+    <link rel="icon" href="img/icons8-coronavirus-64.png">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <p>hello world!</p>
+    {{>header}}
+    <section class="search-box">
+        <div class="search-type">
+            <p>search nearby</p>
+            <select name="type">
+                <option>Hospitals with cases</option>
+                <option>Confirmed cases</option>
+            </select>
+        </div>
+        <div class="search-address">
+            <input class="search-input" type="text" placeholder="enter address of the place you want to check">
+            <button class="submit-button">GO</button>
+        </div>
+    </section>
+    <section class="results">
+        <h1>test</h1>
+    </section>
 </body>
 
 </html>
