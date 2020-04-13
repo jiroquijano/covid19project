@@ -34,14 +34,14 @@ h2{
 }
 
 .search-box{
-    transition: 1s;
+    transition: 0.5s;
     height: 20vh;
     background-image: linear-gradient(rgba(238, 238, 238, 0.801),white);
     clip-path: polygon(7% 0, 93% 0, 100% 100%, 0% 100%);
 }
 
 .search-box:hover{
-    background-color: rgb(202, 194, 194);
+    background-color: rgb(163, 157, 157);
 }
 
 .search-type{
@@ -100,4 +100,32 @@ h2{
 
 .submit-button:active{
     transform: translateY(4px);
+}
+
+.search-suggestions{
+    text-align: center;
+}
+
+.suggestion{
+    border-radius: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: small;
+    color: #333333;
+    background-color: white;
+    box-shadow: 0 0;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    transition: 0.2s;
+}
+
+.suggestion:hover{
+    transform: translateY(3px);
+}
+
+.search-results{
+    background-color: #222222;
+    height:40vh;
+    box-shadow: 0 5px 10px #555555;
+    background-image: linear-gradient(to bottom right, black, #222222);
 }

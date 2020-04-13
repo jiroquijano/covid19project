@@ -10,20 +10,10 @@
 <body>
     {{>header}}
     <section class="search-box">
-        <div class="search-type">
-            <p>search nearby</p>
-            <select name="type">
-                <option>Hospitals with cases</option>
-                <option>Confirmed cases</option>
-            </select>
-        </div>
-        <div class="search-address">
-            <input class="search-input" type="text" placeholder="enter address of the place you want to check">
-            <button class="submit-button">GO</button>
-        </div>
+        {{>searchtype}}
+        {{>searchaddress}}
     </section>
-    <section class="results">
-        <h1>test</h1>
+    <section class="search-results">
     </section>
 </body>
 
