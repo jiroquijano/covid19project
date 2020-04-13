@@ -7,7 +7,7 @@ const localizeToPhilippinesOnly = (places) =>{
 }
 
 const getGeoLocation = (address,callback) =>{
-    const mapboxURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?limit=5&access_token=pk.eyJ1Ijoiamlyb3F1aWphbm8iLCJhIjoiY2s4MXJvbW9xMHRwNzNtb3E4djltN3UxaCJ9.XJy-r35twz2mNNXikiALHA`;
+    const mapboxURL = `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(address)}.json?limit=4&access_token=pk.eyJ1Ijoiamlyb3F1aWphbm8iLCJhIjoiY2s4MXJvbW9xMHRwNzNtb3E4djltN3UxaCJ9.XJy-r35twz2mNNXikiALHA`;
     const mapboxResult = axios(mapboxURL);
     mapboxResult.then((response)=>{
         const localizedPlaces = localizeToPhilippinesOnly(response.data.features);
