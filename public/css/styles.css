@@ -2,10 +2,10 @@ body{
     margin:0;
     padding:0;
 }
-
+/*=====================HEADER STYLES============================*/
 header{
     text-align: center;
-    margin-top: 15vh;
+    margin-top: 10vh;
 }
 
 header h1 {
@@ -24,7 +24,7 @@ header h1 {
     clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
 }
 
-h2{
+header h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
     margin-top: 0;
@@ -32,6 +32,8 @@ h2{
     padding: 0;
     color: #333333;
 }
+
+/*===============SEARCH-BOX===========================*/
 
 .search-box{
     transition: 0.5s;
@@ -127,18 +129,14 @@ h2{
     transform: translateY(3px);
 }
 
+/*===============SEARCH-RESULTS==========================*/
+
 .search-results{
     margin:0;
     background-color: #222222;
-    height:40vh;
     box-shadow: 0 5px 10px #555555;
     background-image: linear-gradient(to bottom right, black, #222222);
-}
-
-.search-results p{
-    margin:0;
-    border:0;
-    padding:0;
+    height: auto;
 }
 
 .loader {
@@ -153,7 +151,95 @@ h2{
   }
   
   
-  @keyframes spin {
+@keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-  }
+}
+
+.result-type{
+    margin:0;
+    color:white;
+    height: 20px;
+    padding-top: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    background-color: #333333;
+    box-shadow: 0 1px 10px #333333;
+    text-align: center;
+}
+
+.totals{
+    background-color: #111111;
+    box-shadow: 0 1px 10px red;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10vh;
+}
+
+table{
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+.confirmed-table{
+    border-right:rgb(78, 78, 78) solid 5px;
+    margin-right: 40px;
+    margin-left: 32vw;
+    width: 19vw;
+}
+
+.pui-table{
+    width: 12vw;
+}
+
+.confirmed-head, .pui-head{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.3vw;
+    color: white;
+}
+
+.confirmed-count{
+    color:red;
+    font-family: monospace;
+    font-size: 7vw;
+}
+
+.pui-count{
+    color:#555555;
+    font-family: monospace;
+    font-size: 7vw;
+}
+
+ul{
+    list-style-type: none;
+    margin-left: 22vw;
+    margin-bottom: 10vh;
+}
+
+.hospital-item{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    border-right: 10px;
+    background-color: #222222;
+    color:white;
+    width: 50vw;
+    margin-bottom:19px;
+}
+
+.hospital-item h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.hospital-item h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: small;
+    margin:0;
+    margin-top:5px;
+    padding-bottom: 10px;
+}
+
