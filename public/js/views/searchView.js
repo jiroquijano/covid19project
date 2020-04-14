@@ -20,3 +20,7 @@ export const suggestAlternativePlaces = (selected,altPlaces)=>{
     DOMElements.searchInput.value = selected;
     DOMElements.searchSuggestions.insertAdjacentHTML("afterbegin",markup);
 }
+
+export const changeSearchInputValue = (newText) =>{
+    DOMElements.searchInput.value = newText;
+}

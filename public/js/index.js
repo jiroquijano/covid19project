@@ -23,3 +23,13 @@ const searchControl = ()=>{
 DOMElements.submitButton.addEventListener('click',(event)=>{
     searchControl();
 });
+
+DOMElements.searchInput.addEventListener('keypress',(event)=>{
+    if(event.code === 'Enter'){
+        searchControl();
+    }
+});
+
+DOMElements.searchSuggestions.addEventListener('click',(event)=>{
+    searchView.changeSearchInputValue(event.target.closest('.suggestion').textContent);
+});

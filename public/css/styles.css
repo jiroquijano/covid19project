@@ -5,7 +5,7 @@ body{
 
 header{
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 15vh;
 }
 
 header h1 {
@@ -58,6 +58,10 @@ h2{
     padding:0;
 }
 
+.search-type select{
+    margin-top: 5px;
+}
+
 .search-input{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
@@ -71,7 +75,6 @@ h2{
 }
 
 .search-input:hover{
-    font-size: 20px;
     border-left-color: rgb(0, 255, 0);
     border-left-width: 10px;
     text-align: center;
