@@ -12,6 +12,14 @@ export const alertNoResultsFound = (searchValue)=>{
     alert(`No Results found for ${searchValue} :(`);
 }
 
+export const renderLoader = ()=> {
+    DOMElements.searchSuggestions.insertAdjacentHTML("afterbegin",`<div class="loader"></div>`);
+}
+
+export const removeLoader = ()=>{
+    DOMElements.searchSuggestions.innerHTML='';
+}
+
 export const suggestAlternativePlaces = (selected,altPlaces)=>{
     DOMElements.searchSuggestions.innerHTML = '';
     let markup = altPlaces.reduce((acc, curr) => {

@@ -140,13 +140,13 @@ header h2{
 }
 
 .loader {
-    border: 16px solid #f3f3f3;
+    border: 16px solid black;
     border-radius: 50%;
     border-top: 16px solid #f50202;
-    width: 60px;
-    height: 60px;
-    margin-top: 10vh;
-    margin-left: 47vw;
+    width: 15px;
+    height: 15px;
+    margin-top: 1vh;
+    margin-left: 50vw;
     animation: spin 2s linear infinite;
   }
   

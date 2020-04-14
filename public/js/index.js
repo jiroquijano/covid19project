@@ -1,5 +1,5 @@
 import Search from './models/Search.js';
-import {DOMElements, renderLoader} from './views/base.js';
+import {DOMElements} from './views/base.js';
 import * as searchView from './views/searchView.js';
 
 const modelsState = {
@@ -9,10 +9,10 @@ const modelsState = {
 const searchControl = ()=>{
     const query = searchView.getSearchValues();
     if(!query) return console.log(`button was clicked without any query`);
-    renderLoader();
+    searchView.renderLoader();
     modelsState.search = new Search(query);
     modelsState.search.getInformationFromBackend((data)=>{
-        DOMElements.searchResult.innerHTML='';
+        searchView.removeLoader();
         if(data.error) return searchView.alertNoResultsFound(query.searchValue);
         const alternativePlaces = data.geodata.alternativePlaces ? data.geodata.alternativePlaces:[];
         searchView.suggestAlternativePlaces(data.geodata.name,alternativePlaces);

@@ -5,7 +5,3 @@ export const DOMElements = {
     searchResult: document.querySelector('.search-results'),
     searchSuggestions: document.querySelector('.search-suggestions')
 };
-
-export const renderLoader = ()=> {
-    DOMElements.searchResult.innerHTML = `<p>loading</p><div class="loader"></div>`;
-}
