@@ -6,7 +6,7 @@ const viewPath = path.join(__dirname,'../templates/views');
 const partialPath = path.join(__dirname,'../templates/partials');
 const app = express();
 const port = process.env.PORT || 3000;
-const {getNearbyX} = require('./datasrc/covidinfo');
+const {getNearbyX,scrapeWorldOmetersData} = require('./datasrc/covidinfo');
 const {getGeoLocation} = require('./geolocation/geolocation');
 
 app.use(express.static(publicDirectoryPath)); //for serving up the static files in public directory
@@ -46,6 +46,14 @@ app.get('/individuals',(req,res)=>{
             if(error) return res.send({error});
             res.send({geodata,data});
         });
+    });
+});
+
+//scrape daily reports from world ometers yesterday
+app.get('/scrape',(req,res)=>{
+    scrapeWorldOmetersData((error,data)=>{
+        if(error) return res.send(error);
+        res.send(data);
     });
 });
 

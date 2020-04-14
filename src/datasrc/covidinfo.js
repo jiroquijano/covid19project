@@ -1,5 +1,7 @@
 const axios = require('axios');
-const covidurl = 'https://coronavirus-ph-api.herokuapp.com'
+const cheerio = require('cheerio');
+const covidurl = 'https://coronavirus-ph-api.herokuapp.com';
+const worldOmetersUrl = "https://www.worldometers.info/coronavirus/country/philippines/"
 
 //bbox contains the information about the land area by providing 2 sets of coordinates
 const getLandArea = (geodata) =>{
@@ -36,4 +38,59 @@ const getNearbyX = (inputData,callback) =>{
     });
 };
 
-module.exports = {getNearbyX};
+const createFormattedCurrentDate = (checkYesterday=0)=>{
+    const dateNow = new Date().toLocaleDateString('en-US');
+    let [month, date, year] = dateNow.split('/');
+
+    [date,month] = [date, month].map((curr)=>{
+        return curr.length === 1 ? `0${curr}` : curr;
+    });
+
+    return `${year}-${month}-${date-checkYesterday}`;
+}
+
+const scrapeWorldOmetersData = (callback) =>{
+    const response = axios.get(worldOmetersUrl);
+    response.then((result)=>{
+        const data = result.data; //get result data
+        const $ = cheerio.load(data); //load data to cheerio
+
+        const newCasesQuery = `#newsdate${createFormattedCurrentDate()}`; //this is the [selector] query for new cases
+        const casesYesterdayQuery = `#newsdate${createFormattedCurrentDate(1)}`; //subtract date by 1 to get cases yesterday
+        const totalsQuery = `.maincounter-number`; //this is for the total cases, order is [total cases, deaths, recoveries]
+        
+        let newCasesString = $(`${newCasesQuery}`).text();
+        let yesterdayCasesString = $(`${casesYesterdayQuery}`).text();
+        let totalsString = $(`${totalsQuery}`).text();
+
+        //remove line breaks
+        newCasesString = newCasesString.replace(/\n+/g,''); 
+        yesterdayCasesString = yesterdayCasesString.replace(/\n+/g,'');
+
+        let newCases,newDeaths,casesYesterday, deathsYesterday;
+
+        if(newCasesString.length>0){
+            //deconstruct string to new cases and new deaths
+            [newCases, newDeaths] = newCasesString.split(' ').filter((curr)=>isFinite(curr));    
+        }
+        if(yesterdayCasesString.length>0){
+            //do the same
+            [casesYesterday, deathsYesterday] = yesterdayCasesString.split(' ').filter((curr)=>isFinite(curr));
+        }
+
+        //sanitize the goddamn string. whew. sorry for the messy chain of string manipulations, I promise you it works.
+        const [totalCases,totalDeaths,recoveries] = totalsString.replace(',','').replace(' ','').split('\n').filter(curr=>curr!='');
+       
+        callback(undefined,{
+            newCases,
+            newDeaths,
+            casesYesterday,
+            deathsYesterday,
+            totalCases,
+            totalDeaths,
+            recoveries
+        });
+    });
+};
+
+module.exports = {getNearbyX,scrapeWorldOmetersData};
