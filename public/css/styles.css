@@ -28,9 +28,15 @@ header h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2em;
     margin-top: 0;
+    margin-bottom: 0;
     text-align: center;
     padding: 0;
     color: #333333;
+}
+
+nav ul{
+    list-style-type: none;
+    margin-top:0;
 }
 
 /*===============SEARCH-BOX===========================*/
@@ -170,10 +176,21 @@ header h2{
 
 .totals{
     background-color: #111111;
-    box-shadow: 0 1px 10px red;
     width: 100%;
     height: auto;
     margin-bottom: 10vh;
+}
+
+.redboxshadow{
+    box-shadow: 0 1px 10px red;
+}
+
+.greenboxshadow{
+    box-shadow: 0 1px 10px green;
+}
+
+.orangeboxshadow{
+    box-shadow: 0 1px 10px orange;
 }
 
 table{
@@ -212,7 +229,7 @@ table{
     font-size: 7vw;
 }
 
-ul{
+.result-items{
     list-style-type: none;
     margin-left: 22vw;
     margin-bottom: 10vh;
@@ -241,5 +258,13 @@ ul{
     margin:0;
     margin-top:5px;
     padding-bottom: 10px;
+}
+
+.red{
+    color:red;
+}
+
+.yellow{
+    color:yellow;
 }
 

@@ -1,9 +1,12 @@
 import Search from './models/Search.js';
+import Results from './models/Results.js';
 import {DOMElements} from './views/base.js';
 import * as searchView from './views/searchView.js';
+import * as searchResultsView from './views/searchResultsView.js';
 
 const modelsState = {
-    search: ''
+    search: '',
+    results: ''
 }
 
 const searchControl = ()=>{
@@ -17,7 +20,15 @@ const searchControl = ()=>{
         const alternativePlaces = data.geodata.alternativePlaces ? data.geodata.alternativePlaces:[];
         searchView.suggestAlternativePlaces(data.geodata.name,alternativePlaces);
         console.log(data);
+        modelsState.results = new Results(data,modelsState.search.getType());
+        resultsControl();
     });
+}
+
+const resultsControl = ()=>{
+    const confirmedCasesTotal = modelsState.results.getTotalOfX('confirmed_cases');
+    const puisTotal = modelsState.results.getTotalOfX('puis');
+    searchResultsView.renderSearchResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
 }
 
 DOMElements.submitButton.addEventListener('click',(event)=>{
