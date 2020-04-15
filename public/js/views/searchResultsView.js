@@ -23,17 +23,18 @@ const renderHospitalItems = (hospitalsArray) =>{
     return markup;
 }
 
-export const renderSearchResults = (confirmedSummary,puiSummary,items) =>{
+export const renderHospitalsResults = (confirmedSummary,puiSummary,items) =>{
     DOMElements.searchResult.innerHTML = '';
-    const markup = `<p class="result-type"><i class="fas fa-search-location"></i>   SEARCH RESULTS</p>
+    const markup = `<p class="result-type"><i class="fas fa-search-location"></i>   NEARBY HOSPITALS</p>
                     <article class="totals">
+                        <p><i class="fas fa-file-medical-alt"></i>   SUMMARY</p>
                         <table class="confirmed-table">
                             <tbody>
                                 <tr>
-                                    <th class="confirmed-head"><i class="fas fa-virus"></i>CONFIRMED</th>
+                                    <th class="confirmed-head"><i class="fas fa-virus"></i>  CONFIRMED</th>
                                 </tr>
                                 <tr>
-                                    <td class="confirmed-count">${confirmedSummary}</td>
+                                    <td class="confirmed-count count">${confirmedSummary}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -43,7 +44,7 @@ export const renderSearchResults = (confirmedSummary,puiSummary,items) =>{
                                     <th class="pui-head"><i class="fas fa-person-booth"></i> PUIS</th>
                                 </tr>
                                 <tr>
-                                    <td class="pui-count">${puiSummary}</td>
+                                    <td class="pui-count count">${puiSummary}</td>
                                 </tr>
                             </tbody>
                         </table>

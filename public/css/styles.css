@@ -146,7 +146,7 @@ nav ul{
 }
 
 .loader {
-    border: 16px solid black;
+    border: 16px solid #777777;
     border-radius: 50%;
     border-top: 16px solid #f50202;
     width: 15px;
@@ -168,7 +168,7 @@ nav ul{
     height: 20px;
     padding-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 1vw;
     background-color: #333333;
     box-shadow: 0 1px 10px #333333;
     text-align: center;
@@ -179,6 +179,18 @@ nav ul{
     width: 100%;
     height: auto;
     margin-bottom: 10vh;
+}
+
+.totals p{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    margin-left: .8vw;
+    letter-spacing: 3px;
+    padding-top: 20px;
+    margin-top:0;
+    font-size: 1.5vw;
+    text-align: center;
 }
 
 .redboxshadow{
@@ -203,39 +215,66 @@ table{
 .confirmed-table{
     border-right:rgb(78, 78, 78) solid 5px;
     margin-right: 40px;
-    margin-left: 32vw;
+    margin-left: 31vw;
     width: 19vw;
 }
 
-.pui-table{
-    width: 12vw;
+.admitted-table{
+    border-right:rgb(78, 78, 78) solid 5px;
+    margin-right: 40px;
+    margin-left: 22vw;
+    width: 19vw;
 }
 
-.confirmed-head, .pui-head{
+.dead-table{
+    border-right:rgb(78, 78, 78) solid 5px;
+    margin-right: 35px;
+    padding-left: 10px;
+    width: 15vw;
+}
+
+.pui-table, .recovered-table{
+    width: 19vw;
+}
+
+.confirmed-head, .pui-head, .admitted-head, .dead-head, .recovered-head{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.3vw;
     color: white;
 }
 
-.confirmed-count{
+.confirmed-count, .dead-count{
     color:red;
     font-family: monospace;
     font-size: 7vw;
+    transition: .5s;
 }
 
-.pui-count{
+.pui-count, .admitted-count{
     color:#555555;
     font-family: monospace;
     font-size: 7vw;
+    transition: .5s;
+}
+
+.recovered-count{
+    color: green;
+    font-family: monospace;
+    font-size: 7vw;
+    transition: .5s;
+}
+
+.count:hover{
+    font-size: 8vw;
 }
 
 .result-items{
     list-style-type: none;
-    margin-left: 22vw;
+    margin-left: 23vw;
     margin-bottom: 10vh;
 }
 
-.hospital-item{
+.hospital-item, .individual-item{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     border-right: 10px;
@@ -243,16 +282,24 @@ table{
     color:white;
     width: 50vw;
     margin-bottom:19px;
+    transition: 1s;
 }
 
-.hospital-item h1{
+.individual-item:hover, .hospital-item:hover{
+    transform: translateY(4px);
+    background-color: #111111;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hospital-item h1, .individual-item h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     padding-top: 5px;
     margin: 0;
 }
 
-.hospital-item h2{
+.hospital-item h2, .individual-item h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     margin:0;

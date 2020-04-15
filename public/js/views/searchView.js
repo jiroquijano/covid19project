@@ -9,7 +9,7 @@ export const getSearchValues = ()=>{
 
 export const alertNoResultsFound = (searchValue)=>{
     DOMElements.searchSuggestions.innerHTML = '';
-    alert(`No Results found for ${searchValue} :(`);
+    alert(`No results found for ${searchValue}.\nPlease try to specify your search.`);
 }
 
 export const renderLoader = ()=> {

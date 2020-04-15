@@ -28,7 +28,7 @@ const searchControl = ()=>{
 const resultsControl = ()=>{
     const confirmedCasesTotal = modelsState.results.getTotalOfX('confirmed_cases');
     const puisTotal = modelsState.results.getTotalOfX('puis');
-    searchResultsView.renderSearchResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
+    searchResultsView.renderHospitalsResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
 }
 
 DOMElements.submitButton.addEventListener('click',(event)=>{
