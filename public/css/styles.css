@@ -5,7 +5,7 @@ body{
 /*=====================HEADER STYLES============================*/
 header{
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 20vh;
 }
 
 header h1 {
@@ -139,10 +139,9 @@ nav ul{
 
 .search-results{
     margin:0;
-    background-color: #222222;
+    background-color: #111111;
     box-shadow: 0 5px 10px #555555;
-    background-image: linear-gradient(to bottom right, black, #222222);
-    height: auto;
+    min-height: 100vh;
 }
 
 .loader {
@@ -177,7 +176,6 @@ nav ul{
 .totals{
     background-color: #111111;
     width: 100%;
-    height: auto;
     margin-bottom: 10vh;
 }
 
