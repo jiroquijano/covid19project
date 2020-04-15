@@ -43,7 +43,7 @@ nav ul{
 
 .search-box{
     transition: 0.5s;
-    height: 20vh;
+    height: 15vw;
     background-image: linear-gradient(rgba(238, 238, 238, 0.801),white);
     clip-path: polygon(7% 0, 93% 0, 100% 100%, 0% 100%);
 }

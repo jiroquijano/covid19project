@@ -86,6 +86,7 @@ const scrapeWorldOmetersData = (callback) =>{
         const [totalCases,totalDeaths,recoveries] = totalsString.replace(',','').replace(' ','').split('\n').filter(curr=>curr!='');
        
         callback(undefined,{
+            newCases,
             newDeaths,
             casesYesterday,
             deathsYesterday,
