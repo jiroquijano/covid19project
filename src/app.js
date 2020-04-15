@@ -18,7 +18,10 @@ hbs.registerPartials(partialPath);
 
 //ROOT route
 app.get('/',(req,res)=>{
-    res.render('index');
+    const dateToday = new Date().toLocaleDateString('en-US');
+    res.render('index',{
+        dateToday
+    });
 });
 
 //this will be used for getting hospitals near queried coordinates

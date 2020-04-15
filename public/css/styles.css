@@ -226,38 +226,58 @@ table{
     width: 19vw;
 }
 
-.dead-table{
+.overall-table{
+    border-right:rgb(78, 78, 78) solid 5px;
+    margin-right: 20px;
+    margin-left: 15vw;
+    padding-right: 10px;
+    width: 20vw;
+}
+
+.dead-table, .overall-death-table{
     border-right:rgb(78, 78, 78) solid 5px;
     margin-right: 35px;
     padding-left: 10px;
     width: 15vw;
 }
 
-.pui-table, .recovered-table{
-    width: 19vw;
+.overall-death-table{
+    border-right:rgb(78, 78, 78) solid 5px;
+    margin-right: 20px;
+    width: 22vw;
+    padding-left:0;
+    margin-left:0;
 }
 
-.confirmed-head, .pui-head, .admitted-head, .dead-head, .recovered-head{
+.total-recovered-table{
+    width: 26vw;
+}
+
+.pui-table, .recovered-table{
+    width: 20vw;
+}
+
+.confirmed-head, .pui-head, .admitted-head, .dead-head, .recovered-head, .overall-head, .overall-death-head, .total-recovered-head{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 2.3vw;
     color: white;
 }
 
-.confirmed-count, .dead-count{
+.confirmed-count, .dead-count, .overall-death-count{
     color:red;
     font-family: monospace;
     font-size: 7vw;
     transition: .2s;
 }
 
-.pui-count, .admitted-count{
+.pui-count, .admitted-count, .overall-count{
     color:#555555;
     font-family: monospace;
     font-size: 7vw;
     transition: .2s;
 }
 
-.recovered-count{
+.recovered-count, .total-recovered-count{
     color: green;
     font-family: monospace;
     font-size: 7vw;
@@ -274,7 +294,7 @@ table{
     margin-bottom: 10vh;
 }
 
-.hospital-item, .individual-item{
+.hospital-item, .individual-item, .day-item{
     font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     border-right: 10px;
@@ -285,21 +305,21 @@ table{
     transition: .2s;
 }
 
-.individual-item:hover, .hospital-item:hover{
+.individual-item:hover, .hospital-item:hover, .day-item:hover{
     transform: translateY(4px);
     background-color: #111111;
     letter-spacing: 3px;
     text-transform: uppercase;
 }
 
-.hospital-item h1, .individual-item h1{
+.hospital-item h1, .individual-item h1, .day-item h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     padding-top: 5px;
     margin: 0;
 }
 
-.hospital-item h2, .individual-item h2{
+.hospital-item h2, .individual-item h2, .day-item h2{
     font-family: Arial, Helvetica, sans-serif;
     font-size: small;
     margin:0;
@@ -313,5 +333,20 @@ table{
 
 .yellow{
     color:yellow;
+}
+
+/*===========FOOTER===========*/
+
+footer{
+    background-color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height:20px;
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: white;
+    text-align: right;
 }
 

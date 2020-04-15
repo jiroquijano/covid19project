@@ -1,12 +1,15 @@
 import Search from './models/Search.js';
 import Results from './models/Results.js';
+import Totals from './models/Totals.js';
 import {DOMElements} from './views/base.js';
 import * as searchView from './views/searchView.js';
 import * as searchResultsView from './views/searchResultsView.js';
+import * as totalsView from './views/totalsView.js';
 
 const modelsState = {
     search: '',
-    results: ''
+    results: '',
+    totals: ''
 }
 
 const searchControl = ()=>{
@@ -38,6 +41,13 @@ const resultsControl = (resultType)=>{
     }
 }
 
+const totalsControl = ()=>{
+    modelsState.totals = new Totals();
+    modelsState.totals.getTotalsData((dailyData)=>{
+        totalsView.updateTotalsView(dailyData);
+    });
+};
+
 DOMElements.submitButton.addEventListener('click',(event)=>{
     searchControl();
 });
@@ -50,4 +60,8 @@ DOMElements.searchInput.addEventListener('keypress',(event)=>{
 
 DOMElements.searchSuggestions.addEventListener('click',(event)=>{
     searchView.changeSearchInputValue(event.target.closest('.suggestion').textContent);
+});
+
+window.addEventListener('load',(event)=>{
+    totalsControl();
 });

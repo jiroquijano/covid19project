@@ -38,15 +38,14 @@ const getNearbyX = (inputData,callback) =>{
     });
 };
 
-const createFormattedCurrentDate = (checkYesterday=0)=>{
-    const dateNow = new Date().toLocaleDateString('en-US');
-    let [month, date, year] = dateNow.split('/');
+const createFormattedCurrentDate = (dateToProcess)=>{
+    let [month, date, year] = dateToProcess.split('/');
 
     [date,month] = [date, month].map((curr)=>{
         return curr.length === 1 ? `0${curr}` : curr;
     });
 
-    return `${year}-${month}-${date-checkYesterday}`;
+    return `${year}-${month}-${date}`;
 }
 
 const scrapeWorldOmetersData = (callback) =>{
@@ -55,8 +54,13 @@ const scrapeWorldOmetersData = (callback) =>{
         const data = result.data; //get result data
         const $ = cheerio.load(data); //load data to cheerio
 
-        const newCasesQuery = `#newsdate${createFormattedCurrentDate()}`; //this is the [selector] query for new cases
-        const casesYesterdayQuery = `#newsdate${createFormattedCurrentDate(1)}`; //subtract date by 1 to get cases yesterday
+        const today = new Date().toLocaleDateString('en-US');
+        let yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        yesterday = yesterday.toLocaleDateString('en-US');
+
+        const newCasesQuery = `#newsdate${createFormattedCurrentDate(today)}`; //this is the [selector] query for new cases
+        const casesYesterdayQuery = `#newsdate${createFormattedCurrentDate(yesterday)}`; //get yesterday's date by setting checkYesterday parameter to true
         const totalsQuery = `.maincounter-number`; //this is for the total cases, order is [total cases, deaths, recoveries]
         
         let newCasesString = $(`${newCasesQuery}`).text();
@@ -82,7 +86,6 @@ const scrapeWorldOmetersData = (callback) =>{
         const [totalCases,totalDeaths,recoveries] = totalsString.replace(',','').replace(' ','').split('\n').filter(curr=>curr!='');
        
         callback(undefined,{
-            newCases,
             newDeaths,
             casesYesterday,
             deathsYesterday,
