@@ -13,6 +13,7 @@ export const alertNoResultsFound = (searchValue)=>{
 }
 
 export const renderLoader = ()=> {
+    DOMElements.searchSuggestions.innerHTML = '';
     DOMElements.searchSuggestions.insertAdjacentHTML("afterbegin",`<div class="loader"></div>`);
 }
 

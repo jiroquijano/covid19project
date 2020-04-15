@@ -1,7 +1,6 @@
 import {DOMElements} from './base.js'
 
 const changeGlowColor = (confirmed,pui)=>{
-    console.log('changing colors');
     if(confirmed+pui === 0){
         document.querySelector('.totals').classList.add('greenboxshadow');
     } else if(pui > 0 && confirmed === 0){
@@ -9,6 +8,38 @@ const changeGlowColor = (confirmed,pui)=>{
     }else{
         document.querySelector('.totals').classList.add('redboxshadow');
     }
+}
+
+const changeGlowColorForIndividualsSearch = (admitted,dead,recovered)=>{
+    const compareArray = [admitted,dead,recovered];
+    if(admitted+dead+recovered === 0){
+        document.querySelector('.totals').classList.add('greenboxshadow');
+    }else if(Math.max(...compareArray) === dead){
+        document.querySelector('.totals').classList.add('redboxshadow');
+    }else if(Math.max(...compareArray) === admitted){
+        document.querySelector('.totals').classList.add('orangeboxshadow');
+    }else if(Math.max(...compareArray)=== recovered){
+        document.querySelector('.totals').classList.add('greenboxshadow');
+    }
+}
+
+const renderIndividualItems = (individualsArray)=>{
+    const markup = individualsArray.reduce((acc,curr)=>{
+        const iconMap = {
+            admitted:'<i class="fas fa-head-side-mask"></i>',
+            died:'<i class="fas fa-skull-crossbones"></i>',
+            recovered:'<i class="fas fa-walking"></i>'
+        };
+        return `${acc}<li>
+                        <div class="individual-item">
+                            <h1>${iconMap[curr.status.toLowerCase()]}</h1>
+                            <h1>Case Number ${curr.case_no}</h1>
+                            <h2>  status: ${curr.status} |   age: ${curr.age} |  gender: ${curr.gender}</h2>
+                            <h2>  nationality: ${curr.nationality} | admitted to: ${curr.hospital_admitted_to}</h2>
+                        </div>
+                    </li>`;
+    },'');
+    return markup;
 }
 
 const renderHospitalItems = (hospitalsArray) =>{
@@ -54,6 +85,49 @@ export const renderHospitalsResults = (confirmedSummary,puiSummary,items) =>{
                         <br>
                     </article>`;
     DOMElements.searchResult.insertAdjacentHTML("afterbegin",markup);
-    console.log('added');
     changeGlowColor(confirmedSummary,puiSummary);
 };
+
+export const renderIndividualsResults = (admittedCount, deadCount, recoveredCount, individualsList)=>{
+    DOMElements.searchResult.innerHTML = '';
+    const markup = `<p class="result-type"><i class="fas fa-search-location"></i>   NEARBY INDIVIDUALS</p>
+                    <article class="totals">
+                        <p><i class="fas fa-file-medical-alt"></i>   SUMMARY</p>
+                        <table class="admitted-table">
+                            <tbody>
+                                <tr>
+                                    <th class="admitted-head"><i class="fas fa-head-side-mask"></i> ADMITTED</th>
+                                </tr>
+                                <tr>
+                                    <td class="admitted-count count">${admittedCount}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="dead-table">
+                            <tbody>
+                                <tr>
+                                    <th class="dead-head"><i class="fas fa-skull-crossbones"></i> DEAD</th>
+                                </tr>
+                                <tr>
+                                    <td class="dead-count count">${deadCount}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="recovered-table">
+                            <tbody>
+                                <tr>
+                                    <th class="recovered-head"><i class="fas fa-walking"></i> RECOVERED</th>
+                                </tr>
+                                <tr>
+                                    <td class="recovered-count count">${recoveredCount}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <ul class="result-items">
+                            ${renderIndividualItems(individualsList)}
+                        </ul>
+                        <br>
+                    </article>`;
+    DOMElements.searchResult.insertAdjacentHTML("afterbegin",markup);
+    changeGlowColorForIndividualsSearch(admittedCount,deadCount,recoveredCount);
+}

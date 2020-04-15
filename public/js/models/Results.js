@@ -1,6 +1,7 @@
 export default class Results{
-    constructor(resultsData,type){
-        this.resultsArray = type === 'hospitals' ? resultsData.data: resultsData;
+    constructor(resultsData){
+        this.resultsArray = resultsData.data;
+        console.log(this.resultsArray);
     };
 
     getTotalOfX(type){
@@ -14,6 +15,10 @@ export default class Results{
 
     getResultsArray(){
         return this.resultsArray;
+    }
+
+    countArrElementsWhichSatisfies(key, value){
+        return this.resultsArray.filter((curr)=> curr[key].toLowerCase() === value.toLowerCase()).length;
     }
 
 } 

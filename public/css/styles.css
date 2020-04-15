@@ -247,21 +247,21 @@ table{
     color:red;
     font-family: monospace;
     font-size: 7vw;
-    transition: .5s;
+    transition: .2s;
 }
 
 .pui-count, .admitted-count{
     color:#555555;
     font-family: monospace;
     font-size: 7vw;
-    transition: .5s;
+    transition: .2s;
 }
 
 .recovered-count{
     color: green;
     font-family: monospace;
     font-size: 7vw;
-    transition: .5s;
+    transition: .2s;
 }
 
 .count:hover{
@@ -282,7 +282,7 @@ table{
     color:white;
     width: 50vw;
     margin-bottom:19px;
-    transition: 1s;
+    transition: .2s;
 }
 
 .individual-item:hover, .hospital-item:hover{

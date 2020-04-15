@@ -20,15 +20,22 @@ const searchControl = ()=>{
         const alternativePlaces = data.geodata.alternativePlaces ? data.geodata.alternativePlaces:[];
         searchView.suggestAlternativePlaces(data.geodata.name,alternativePlaces);
         console.log(data);
-        modelsState.results = new Results(data,modelsState.search.getType());
-        resultsControl();
+        modelsState.results = new Results(data);
+        resultsControl(modelsState.search.getType());
     });
 }
 
-const resultsControl = ()=>{
-    const confirmedCasesTotal = modelsState.results.getTotalOfX('confirmed_cases');
-    const puisTotal = modelsState.results.getTotalOfX('puis');
-    searchResultsView.renderHospitalsResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
+const resultsControl = (resultType)=>{
+    if(resultType === 'hospitals'){
+        const confirmedCasesTotal = modelsState.results.getTotalOfX('confirmed_cases');
+        const puisTotal = modelsState.results.getTotalOfX('puis');
+        searchResultsView.renderHospitalsResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
+    }else if(resultType === 'individuals'){
+        const admittedCount = modelsState.results.countArrElementsWhichSatisfies('status','admitted');
+        const deadCount = modelsState.results.countArrElementsWhichSatisfies('status','died');
+        const recoveredCount = modelsState.results.countArrElementsWhichSatisfies('status','recovered');
+        searchResultsView.renderIndividualsResults(admittedCount,deadCount,recoveredCount,modelsState.results.getResultsArray());
+    }
 }
 
 DOMElements.submitButton.addEventListener('click',(event)=>{
