@@ -321,6 +321,12 @@ table{
     cursor: pointer;
 }
 
+.hospital-item img{
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+}
+
 .individual-item:hover, .hospital-item:hover, .day-item:hover{
     transform: translateY(4px);
     background-color: #111111;
