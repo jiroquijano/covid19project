@@ -52,12 +52,12 @@ const totalsControl = ()=>{
     });
 };
 
-const renderMapForHospitalItem = (coord) =>{
+const renderMapForItem = (coord,itemName) =>{
     const coordinates = coord.split(',');
     modelsState.search.getMapImage(coordinates,(data)=>{
         if(data.error) return console.log('failed to render map');
-        if(!document.querySelector(`.hospital-item[data-coord="${coord}"] img`)){
-            document.querySelector(`.hospital-item[data-coord="${coord}"]`).insertAdjacentHTML('beforeend',`<img class="geoimg" src=${data.staticMapImageSrc}>`);
+        if(!document.querySelector(`.${itemName}[data-coord="${coord}"] img`)){
+            document.querySelector(`.${itemName}[data-coord="${coord}"]`).insertAdjacentHTML('beforeend',`<img class="geoimg" src=${data.staticMapImageSrc}>`);
         }
     });
 }
@@ -77,13 +77,14 @@ DOMElements.searchSuggestions.addEventListener('click',(event)=>{
 });
 
 DOMElements.searchResult.addEventListener('click',(event)=>{
-    if(event.target.closest('.hospital-item')){
-        document.querySelectorAll('.hospital-item img').forEach((curr)=>{
-            if(curr.parentElement.dataset.coord != event.target.closest('.hospital-item').dataset.coord){
-                curr.parentElement.removeChild(document.querySelector('.hospital-item img'));
+    if(event.target.closest('.hospital-item') || event.target.closest('.individual-item')){
+        const type = event.target.closest('.hospital-item') ? 'hospital-item' : 'individual-item';
+        document.querySelectorAll(`.${type} img`).forEach((curr)=>{
+            if(curr.parentElement.dataset.coord != event.target.closest(`.${type}`).dataset.coord){
+                curr.parentElement.removeChild(document.querySelector(`.${type} img`));
             }
         });
-        renderMapForHospitalItem(event.target.closest('.hospital-item').dataset.coord);
+        renderMapForItem(event.target.closest(`.${type}`).dataset.coord, type);
     }
 });
 

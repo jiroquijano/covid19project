@@ -317,14 +317,8 @@ table{
     transition: .2s;
 }
 
-.hospital-item{
+.hospital-item, .individual-item{
     cursor: pointer;
-}
-
-.hospital-item img{
-    width: auto;
-    height: auto;
-    border-radius: 20px;
 }
 
 .individual-item:hover, .hospital-item:hover, .day-item:hover{
