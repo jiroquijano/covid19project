@@ -7,10 +7,10 @@ const worldOmetersUrl = "https://www.worldometers.info/coronavirus/country/phili
 const getLandArea = (geodata) =>{
     //create an arbitrary landarea if bbox is not available
     if(!geodata.bbox) {
-        return [geodata.coordinates[0]-.02, //longitude
-                geodata.coordinates[1]-.02, //latitude
-                geodata.coordinates[0]+.02, //longitude, and then another latitude
-                geodata.coordinates[1]+.02].map((curr)=>Number(curr.toPrecision(9)));
+        return [geodata.coordinates[0]-.01, //longitude
+                geodata.coordinates[1]-.01, //latitude
+                geodata.coordinates[0]+.01, //longitude, and then another latitude
+                geodata.coordinates[1]+.01].map((curr)=>Number(curr.toPrecision(9)));
     }
     return geodata.bbox;
 }

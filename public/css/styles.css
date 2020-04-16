@@ -3,9 +3,21 @@ body{
     padding:0;
 }
 /*=====================HEADER STYLES============================*/
+.notice{
+    background-color: yellow;
+    border-top-right-radius: 10px;
+    border: solid black 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    height: auto;
+    position: fixed;
+    text-align: right;
+    bottom:0;
+}
+
 header{
     text-align: center;
-    margin-top: 20vh;
+    margin-top: 100px;
 }
 
 header h1 {
@@ -101,16 +113,6 @@ nav ul{
     transition: 0.3s
 }
 
-.submit-button:hover{
-    color:white;
-    font-weight: bolder;
-    font-size: larger;
-    height: 60px;
-    width: 60px;
-    background-color: white;
-    background-image: linear-gradient(to bottom right,green, rgb(0, 255, 0));
-}
-
 .submit-button:active{
     transform: translateY(4px);
 }
@@ -135,6 +137,14 @@ nav ul{
 .suggestion:hover{
     transform: translateY(3px);
 }
+.geoimg-container{
+    text-align: center;
+}
+.geoimg{
+    width: 600px;
+    height: 300px;
+    border-radius: 20px;
+}
 
 /*===============SEARCH-RESULTS==========================*/
 
@@ -154,7 +164,7 @@ nav ul{
     width: 15px;
     height: 15px;
     margin-top: 1vh;
-    margin-left: 50vw;
+    margin-left: 48vw;
     animation: spin 2s linear infinite;
   }
   
@@ -290,7 +300,7 @@ table{
     font-size: 8vw;
 }
 
-.result-items{
+.result-items, .day-items{
     list-style-type: none;
     margin-left: 23vw;
     margin-bottom: 10vh;
@@ -307,11 +317,13 @@ table{
     transition: .2s;
 }
 
+.hospital-item{
+    cursor: pointer;
+}
+
 .individual-item:hover, .hospital-item:hover, .day-item:hover{
     transform: translateY(4px);
     background-color: #111111;
-    letter-spacing: 3px;
-    text-transform: uppercase;
 }
 
 .hospital-item h1, .individual-item h1, .day-item h1{
@@ -344,7 +356,7 @@ footer{
     position: fixed;
     left: 0;
     bottom: 0;
-    height:20px;
+    height:auto;
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;

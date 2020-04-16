@@ -9,11 +9,13 @@ export const getSearchValues = ()=>{
 
 export const alertNoResultsFound = (searchValue)=>{
     DOMElements.searchSuggestions.innerHTML = '';
+    DOMElements.searchMap.innerHTML = '';
     alert(`No results found for ${searchValue}.\nPlease try to specify your search.`);
 }
 
 export const renderLoader = ()=> {
     DOMElements.searchSuggestions.innerHTML = '';
+    DOMElements.searchMap.innerHTML = '';
     DOMElements.searchSuggestions.insertAdjacentHTML("afterbegin",`<div class="loader"></div>`);
 }
 
@@ -32,4 +34,8 @@ export const suggestAlternativePlaces = (selected,altPlaces)=>{
 
 export const changeSearchInputValue = (newText) =>{
     DOMElements.searchInput.value = newText;
+}
+
+export const renderMapResult = (imgSrc) =>{
+    DOMElements.searchMap.insertAdjacentHTML('afterbegin',`<img class="geoimg" src=${imgSrc}>`);
 }

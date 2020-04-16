@@ -31,7 +31,7 @@ const renderIndividualItems = (individualsArray)=>{
             recovered:'<i class="fas fa-walking"></i>'
         };
         return `${acc}<li>
-                        <div class="individual-item">
+                        <div class="individual-item" data-coord="${curr.longitude},${curr.latitude}">
                             <h1>${iconMap[curr.status.toLowerCase()]}</h1>
                             <h1>Case Number ${curr.case_no}</h1>
                             <h2>  status: ${curr.status} |   age: ${curr.age} |  gender: ${curr.gender}</h2>
@@ -45,7 +45,7 @@ const renderIndividualItems = (individualsArray)=>{
 const renderHospitalItems = (hospitalsArray) =>{
     const markup = hospitalsArray.reduce((acc,curr)=>{
         return `${acc}<li>
-                        <div class="hospital-item">
+                        <div class="hospital-item" data-coord="${curr.longitude},${curr.latitude}">
                             <h1>${curr.facility}</h1>
                             <h2><span class="red"><i class="fas fa-virus"></i>  confirmed cases: ${curr.confirmed_cases} </span>| <i class="fas fa-person-booth"></i>  under investigation: ${curr.puis}</h2>
                         </div>

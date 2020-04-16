@@ -7,7 +7,7 @@ const partialPath = path.join(__dirname,'../templates/partials');
 const app = express();
 const port = process.env.PORT || 3000;
 const {getNearbyX,scrapeWorldOmetersData} = require('./datasrc/covidinfo');
-const {getGeoLocation} = require('./geolocation/geolocation');
+const {getGeoLocation, getGeoImage} = require('./geolocation/geolocation');
 
 app.use(express.static(publicDirectoryPath)); //for serving up the static files in public directory
 
@@ -58,6 +58,12 @@ app.get('/scrape',(req,res)=>{
         if(error) return res.send(error);
         res.send(data);
     });
+});
+
+app.get('/geoimage',(req,res)=>{
+    if(!req.query.coordinates) return res.send({error:'No coordinates provided!'});
+    const [longitude,latitude] = req.query.coordinates.split(',');
+    res.send(getGeoImage(longitude,latitude));
 });
 
 
