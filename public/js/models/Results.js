@@ -17,8 +17,8 @@ export default class Results{
         return this.resultsArray;
     }
 
-    countArrElementsWhichSatisfies(key, value){
-        return this.resultsArray.filter((curr)=> curr[key].toLowerCase() === value.toLowerCase()).length;
+    countArrElementsWhichHas(key){
+        return this.resultsArray.filter((curr)=> curr[key]);
     }
 
 } 

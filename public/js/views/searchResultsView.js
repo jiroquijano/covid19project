@@ -25,17 +25,19 @@ const changeGlowColorForIndividualsSearch = (admitted,dead,recovered)=>{
 
 const renderIndividualItems = (individualsArray)=>{
     const markup = individualsArray.reduce((acc,curr)=>{
+        const status = curr.date_died ? 'died' : curr.recovered_on ? 'recovered' : curr.is_admitted ? 'admitted' : 'unknown';
         const iconMap = {
             admitted:'<i class="fas fa-head-side-mask"></i>',
+            unknown: '<i class="fas fa-head-side-mask"></i>',
             died:'<i class="fas fa-skull-crossbones"></i>',
             recovered:'<i class="fas fa-walking"></i>'
         };
         return `${acc}<li>
                         <div class="individual-item" data-coord="${curr.longitude},${curr.latitude}">
-                            <h1>${iconMap[curr.status.toLowerCase()]}</h1>
-                            <h1>Case Number ${curr.case_no}</h1>
-                            <h2>  status: ${curr.status} |   age: ${curr.age} |  gender: ${curr.gender}</h2>
-                            <h2>  nationality: ${curr.nationality} | admitted to: ${curr.hospital_admitted_to}</h2>
+                            <h1>${iconMap[status.toLowerCase()]}</h1>
+                            <h1>Case Number ${curr.case_code}</h1>
+                            <h2>  age: ${curr.age} |  gender: ${curr.gender}</h2>
+                            <h2>  resident of: ${curr.location} | status: ${status}</h2>
                         </div>
                     </li>`;
     },'');

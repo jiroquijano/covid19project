@@ -38,9 +38,10 @@ const resultsControl = (resultType)=>{
         const puisTotal = modelsState.results.getTotalOfX('puis');
         searchResultsView.renderHospitalsResults(confirmedCasesTotal,puisTotal,modelsState.results.getResultsArray());
     }else if(resultType === 'individuals'){
-        const admittedCount = modelsState.results.countArrElementsWhichSatisfies('status','admitted');
-        const deadCount = modelsState.results.countArrElementsWhichSatisfies('status','died');
-        const recoveredCount = modelsState.results.countArrElementsWhichSatisfies('status','recovered');
+        const admittedCount = modelsState.results.countArrElementsWhichHas('is_admitted');
+        const deadCount = modelsState.results.countArrElementsWhichHas('date_died');
+        const recoveredCount = modelsState.results.countArrElementsWhichHas('recovered_on');
+        console.log(`${admittedCount} ${deadCount} ${recoveredCount}`);
         searchResultsView.renderIndividualsResults(admittedCount,deadCount,recoveredCount,modelsState.results.getResultsArray());
     }
 }
