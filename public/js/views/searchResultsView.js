@@ -1,4 +1,4 @@
-import {DOMElements} from './base.js'
+import {DOMElements} from './base.js';
 
 const changeGlowColor = (confirmed,pui)=>{
     if(confirmed+pui === 0){
@@ -34,11 +34,11 @@ const renderIndividualItems = (individualsArray)=>{
         };
         const additionalStatus = status === 'died' ? `(${curr.date_died})` : status === 'recovered' ? `(${curr.recovered_on})` : status === 'admitted' ? `(${curr.date_reported})` : `(no info from DOH)`;
         return `${acc}<li>
-                        <div class="individual-item" data-coord="${curr.longitude},${curr.latitude}">
+                        <div class="individual-item" data-coord="${curr.longitude},${curr.latitude},${curr.case_code}">
                             <h1>${iconMap[status.toLowerCase()]}</h1>
                             <h1>Case Number ${curr.case_code}</h1>
                             <h2>  DATE REPORTED: ${curr.date_reported} | AGE: ${curr.age} | GENDER: ${curr.sex}</h2>
-                            <h2>  RESIDENT OF: ${curr.location} | STATUS: ${status} ${additionalStatus}</h2>
+                            <h2>  RESIDENT OF: ${curr.location ? curr.location : `(no info from DOH)`} | STATUS: ${status} ${additionalStatus}</h2>
                         </div>
                     </li>`;
     },'');
