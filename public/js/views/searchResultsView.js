@@ -32,12 +32,13 @@ const renderIndividualItems = (individualsArray)=>{
             died:'<i class="fas fa-skull-crossbones"></i>',
             recovered:'<i class="fas fa-walking"></i>'
         };
+        const additionalStatus = status === 'died' ? `(${curr.date_died})` : status === 'recovered' ? `(${curr.recovered_on})` : status === 'admitted' ? `(${curr.date_reported})` : `(no info from DOH)`;
         return `${acc}<li>
                         <div class="individual-item" data-coord="${curr.longitude},${curr.latitude}">
                             <h1>${iconMap[status.toLowerCase()]}</h1>
                             <h1>Case Number ${curr.case_code}</h1>
-                            <h2>  age: ${curr.age} |  gender: ${curr.sex}</h2>
-                            <h2>  resident of: ${curr.location} | status: ${status}</h2>
+                            <h2>  DATE REPORTED: ${curr.date_reported} | AGE: ${curr.age} | GENDER: ${curr.sex}</h2>
+                            <h2>  RESIDENT OF: ${curr.location} | STATUS: ${status} ${additionalStatus}</h2>
                         </div>
                     </li>`;
     },'');
