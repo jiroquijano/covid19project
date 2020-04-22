@@ -152,9 +152,8 @@ nav ul{
     margin:0;
     background-color: #111111;
     box-shadow: 0 5px 10px #555555;
-    max-height: 50vh;
     height:auto;
-    min-height: 50vh;
+    min-height: 60vh;
 }
 
 .loader {
@@ -189,8 +188,7 @@ nav ul{
 .totals{
     background-color: #111111;
     width: 100%;
-    min-height: 50vh;
-    margin-bottom: 10vh;
+    min-height: 70vh;
 }
 
 .totals p{
