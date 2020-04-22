@@ -29,7 +29,7 @@ const getNearbyX = (inputData,callback) =>{
     const response = axios.get(`${covidurl}/${searchType[inputData.type]}`);
 
     response.then((response)=>{
-        const elementsWithinTheArea = response.data.filter((curr) => {
+        const elementsWithinTheArea = response.data.data.filter((curr) => {
             return checkIfXisWithinTheArea(landAreaCoordinates,curr.longitude,curr.latitude);
         });
         callback(undefined,elementsWithinTheArea);

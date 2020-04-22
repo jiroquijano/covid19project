@@ -30,7 +30,6 @@ app.get('/hospitals',(req,res)=>{
     getGeoLocation(req.query.address, (error,geodata)=>{
         if(error) return res.send({error});
         inputData = {geodata, type:"hospitals"};
-
         getNearbyX(inputData,(error,data)=>{
             if(error) return res.send({error});
             res.send({geodata,data});
