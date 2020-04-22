@@ -24,7 +24,7 @@ const checkIfXisWithinTheArea = (landAreaCoordinates, currLongitude, currLatitud
 
 //get X (hospital or individuals) within the geodata provided inside inputData
 const getNearbyX = (inputData,callback) =>{
-    const searchType = {individuals:"cases", hospitals:"facilities"};
+    const searchType = {individuals:"doh-data-drop", hospitals:"facilities"};
     const landAreaCoordinates = getLandArea(inputData.geodata);
     const response = axios.get(`${covidurl}/${searchType[inputData.type]}`);
 
