@@ -48,7 +48,7 @@ const renderIndividualItems = (individualsArray)=>{
 const renderHospitalItems = (hospitalsArray) =>{
     const markup = hospitalsArray.reduce((acc,curr)=>{
         return `${acc}<li>
-                        <div class="hospital-item" data-coord="${curr.longitude},${curr.latitude}">
+                        <div class="hospital-item" data-coord="${curr.longitude},${curr.latitude},${curr.facility}">
                             <h1>${curr.facility}</h1>
                             <h2><span class="red"><i class="fas fa-virus"></i>  confirmed cases: ${curr.confirmed_cases} </span>| <i class="fas fa-person-booth"></i>  under investigation: ${curr.puis}</h2>
                         </div>
