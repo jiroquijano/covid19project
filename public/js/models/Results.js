@@ -18,7 +18,7 @@ export default class Results{
     }
 
     countArrElementsWhichHas(key){
-        return this.resultsArray.filter((curr)=> curr[key]);
+        return this.resultsArray.filter((curr)=> curr[key]).length;
     }
 
 } 

@@ -36,7 +36,7 @@ const renderIndividualItems = (individualsArray)=>{
                         <div class="individual-item" data-coord="${curr.longitude},${curr.latitude}">
                             <h1>${iconMap[status.toLowerCase()]}</h1>
                             <h1>Case Number ${curr.case_code}</h1>
-                            <h2>  age: ${curr.age} |  gender: ${curr.gender}</h2>
+                            <h2>  age: ${curr.age} |  gender: ${curr.sex}</h2>
                             <h2>  resident of: ${curr.location} | status: ${status}</h2>
                         </div>
                     </li>`;
