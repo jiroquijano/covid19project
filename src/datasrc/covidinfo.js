@@ -66,11 +66,12 @@ const scrapeWorldOmetersData = (callback) =>{
         let newCasesString = $(`${newCasesQuery}`).text();
         let yesterdayCasesString = $(`${casesYesterdayQuery}`).text();
         let totalsString = $(`${totalsQuery}`).text();
-
+        
+        
         //remove line breaks
-        newCasesString = newCasesString.replace(/\n+/g,''); 
-        yesterdayCasesString = yesterdayCasesString.replace(/\n+/g,'');
-
+        newCasesString = newCasesString.replace(/\n+/g,' '); 
+        yesterdayCasesString = yesterdayCasesString.replace(/\n+/g,' ');
+        
         let newCases,newDeaths,casesYesterday, deathsYesterday;
 
         if(newCasesString.length>0){
