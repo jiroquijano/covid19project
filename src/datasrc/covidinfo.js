@@ -84,7 +84,7 @@ const scrapeWorldOmetersData = (callback) =>{
         }
 
         //sanitize the goddamn string. whew. sorry for the messy chain of string manipulations, I promise you it works.
-        const [totalCases,totalDeaths,recoveries] = totalsString.replace(',','').replace(' ','').split('\n').filter(curr=>curr!='');
+        const [totalCases,totalDeaths,recoveries] = totalsString.replace(/,/g,'').replace(' ','').split('\n').filter(curr=>curr!='');
        
         callback(undefined,{
             newCases,
