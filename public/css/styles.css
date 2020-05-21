@@ -125,6 +125,7 @@ nav ul{
     border-radius: 10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: small;
+    width: 25vw;
     color: #333333;
     background-color: white;
     box-shadow: 0 0;
@@ -204,15 +205,15 @@ nav ul{
 }
 
 .redboxshadow{
-    box-shadow: 0 1px 10px red;
+    box-shadow: 0 -4px 3px red;
 }
 
 .greenboxshadow{
-    box-shadow: 0 1px 10px green;
+    box-shadow: 0 -4px 3px green;
 }
 
 .orangeboxshadow{
-    box-shadow: 0 1px 10px orange;
+    box-shadow: 0 -4px 3px orange;
 }
 
 table{
@@ -241,7 +242,7 @@ table{
     margin-right: 20px;
     margin-left: 15vw;
     padding-right: 10px;
-    width: 20vw;
+    width: 23vw;
 }
 
 .dead-table, .overall-death-table{
@@ -295,7 +296,7 @@ table{
 }
 
 .count:hover{
-    font-size: 8vw;
+    font-size: 6vw;
 }
 
 .result-items, .day-items{
