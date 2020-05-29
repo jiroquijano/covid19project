@@ -76,11 +76,11 @@ const scrapeWorldOmetersData = (callback) =>{
 
         if(newCasesString.length>0){
             //deconstruct string to new cases and new deaths
-            [newCases, newDeaths] = newCasesString.split(' ').filter((curr)=>isFinite(curr));    
+            [newCases, newDeaths] = newCasesString.replace(',','').split(' ').filter((curr)=>isFinite(curr));    
         }
         if(yesterdayCasesString.length>0){
             //do the same
-            [casesYesterday, deathsYesterday] = yesterdayCasesString.split(' ').filter((curr)=>isFinite(curr));
+            [casesYesterday, deathsYesterday] = yesterdayCasesString.replace(',','').split(' ').filter((curr)=>isFinite(curr));
         }
 
         //sanitize the goddamn string. whew. sorry for the messy chain of string manipulations, I promise you it works.
